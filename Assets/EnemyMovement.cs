@@ -8,13 +8,13 @@ public class EnemyMovement : MonoBehaviour
     Animator anim;
     AudioSource enemyaudio;
     public AudioClip sound;
-    ScoreScript score;
+    ScoreScript updatedscore;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         enemyaudio = GetComponent<AudioSource>();
-        score = GetComponent<ScoreScript>();
+        updatedscore = GetComponent<ScoreScript>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -24,7 +24,6 @@ public class EnemyMovement : MonoBehaviour
             enemyaudio.Play();
             anim.SetTrigger("Die");
             StartCoroutine("Wait");
-            score.Increment();
         }
     }
     IEnumerator Wait()

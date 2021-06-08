@@ -62,7 +62,7 @@ public class BulletSpawn : MonoBehaviour
         }
         GameObject temp = bulletpool.Pop();
         temp.SetActive(true);
-        temp.transform.position = transform.position + new Vector3(0.3f, 1f, 0.1f);
+        temp.transform.position = transform.position + new Vector3(0.3f, 1.5f, 0.1f);
         currentbullet = temp;
     }
 }

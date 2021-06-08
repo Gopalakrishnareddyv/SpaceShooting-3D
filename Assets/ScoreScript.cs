@@ -9,7 +9,9 @@ public class ScoreScript : MonoBehaviour
     int updatedscore = 0;
     public void Increment()
     {
+        
         updatedscore++;
-        scoretext.text = " "+updatedscore;
+        scoretext.text = "Score is : "+updatedscore;
+        print("score is :" + updatedscore);
     }
 }

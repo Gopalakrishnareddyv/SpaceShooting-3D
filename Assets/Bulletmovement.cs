@@ -8,11 +8,13 @@ public class Bulletmovement : MonoBehaviour
     public float bulletspeed=5.0f;
     Animator anim;
     public GameObject particle;
+    ScoreScript scorescript;
     // Start is called before the first frame update
     void Start()
     {
         rbbullet = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        scorescript = GameObject.Find("ScoreManage").GetComponent<ScoreScript>();
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class Bulletmovement : MonoBehaviour
             //Destroy(collision.gameObject);
             Destroy(this.gameObject);
             Instantiate(particle, transform.position, Quaternion.identity);
-            
+            scorescript.Increment();
         }
         else
         {

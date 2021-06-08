@@ -11,7 +11,6 @@ public class ScoreScript : MonoBehaviour
     {
         
         updatedscore++;
-        scoretext.text = "Score is : "+updatedscore;
-        print("score is :" + updatedscore);
+        scoretext.text = ""+updatedscore;
     }
 }

@@ -6,22 +6,22 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     Animator anim;
-    AudioSource audio;
+    AudioSource playeraudio;
     public AudioClip sound;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        audio = GetComponent<AudioSource>();
+        playeraudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            audio.clip = sound;
-            audio.Play();
+            playeraudio.clip = sound;
+            playeraudio.Play();
             anim.SetTrigger("Die");
             StartCoroutine("Wait");
         }

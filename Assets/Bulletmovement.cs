@@ -7,6 +7,7 @@ public class Bulletmovement : MonoBehaviour
     Rigidbody rbbullet;
     public float bulletspeed=5.0f;
     Animator anim;
+    public GameObject particle;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +28,11 @@ public class Bulletmovement : MonoBehaviour
         {
             //Destroy(collision.gameObject);
             Destroy(this.gameObject);
+            Instantiate(particle, transform.position, Quaternion.identity);
+            
         }
         else
         {
-
             StartCoroutine(nameof(Bulletadd));
         }
     }

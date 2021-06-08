@@ -7,7 +7,7 @@ public class BulletSpawn : MonoBehaviour
     public GameObject bullet;
     public GameObject currentbullet;
     public AudioClip sound;
-    AudioSource audio;
+    AudioSource bulletaudio;
     Stack<GameObject> bulletpool = new Stack<GameObject>();
     private static BulletSpawn instance;
 
@@ -26,7 +26,7 @@ public class BulletSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        bulletaudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,8 +35,8 @@ public class BulletSpawn : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             BulletSpawning();
-            audio.clip = sound;
-            audio.Play();
+            bulletaudio.clip = sound;
+            bulletaudio.Play();
         }
 
     }
@@ -62,7 +62,7 @@ public class BulletSpawn : MonoBehaviour
         }
         GameObject temp = bulletpool.Pop();
         temp.SetActive(true);
-        temp.transform.position = transform.position + new Vector3(0, 1f, 0);
+        temp.transform.position = transform.position + new Vector3(0.3f, 1f, 0.1f);
         currentbullet = temp;
     }
 }

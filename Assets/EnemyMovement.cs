@@ -6,22 +6,25 @@ public class EnemyMovement : MonoBehaviour
 {
     float enemyspeed=3.0f;
     Animator anim;
-    AudioSource audio;
+    AudioSource enemyaudio;
     public AudioClip sound;
+    ScoreScript score;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        audio = GetComponent<AudioSource>();
+        enemyaudio = GetComponent<AudioSource>();
+        score = GetComponent<ScoreScript>();
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            audio.clip = sound;
-            audio.Play();
+            enemyaudio.clip = sound;
+            enemyaudio.Play();
             anim.SetTrigger("Die");
             StartCoroutine("Wait");
+            score.Increment();
         }
     }
     IEnumerator Wait()
